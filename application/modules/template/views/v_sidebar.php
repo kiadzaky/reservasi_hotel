@@ -97,6 +97,12 @@
 						}if ($this->session->userdata('member_status')=='1') {
 						?>
 						<li class="nav-item active">
+							<a  href="<?=base_url()?>" aria-expanded="false">
+								<i class="fas fa-home"></i>
+								<p>Pesan Kamar</p>
+							</a>
+						</li>
+						<li class="nav-item active">
 							<a data-toggle="collapse" href="" class="collapsed" aria-expanded="false">
 								<i class="fas fa-home"></i>
 								<p>Riwayat Reservasi</p>

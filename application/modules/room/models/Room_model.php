@@ -26,5 +26,12 @@ class Room_model extends CI_Model
 		JOIN kategori_kamar ON kamar.kategori_id = kategori_kamar.kategori_id
 		WHERE kamar_status = '0' AND kamar.kategori_id =  '$id'");	
     }
+    function pesan_kamar($id)
+    {
+    	return $this->db->query("SELECT * FROM `kamar` 
+		JOIN kategori_kamar ON kamar.kategori_id = kategori_kamar.kategori_id
+		WHERE kamar_status = '0' AND kamar.kategori_id =  '$id'
+        LIMIT 1");
+    }
 }
 ?>
