@@ -38,7 +38,7 @@
 						</nav>
 						<div class="header_extra d-flex flex-row align-items-center justify-content-start ml-auto">
 							<a href="http://wa.me/628970605445"><div class="phone d-flex flex-row align-items-center justify-content-start"><i class="fa fa-phone" aria-hidden="true"></i><span>08970605445</span></div></a>
-							<div class="book_button trans_200"><a href="<?=base_url('auth')?>">Login</a></div>
+							<div class="book_button trans_200"><a href="<?=base_url('auth')?>"><?php echo $retVal = (empty($this->session->userdata('member_nik'))) ? 'LOGIN' : 'DASHBOARD' ; ?></a></div>
 						</div>
 						<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
 					</div>
@@ -54,7 +54,7 @@
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center">
 			<ul class="menu_nav_list text-center">
 				
-				<li><a href="<?=base_url('auth')?>">LOGIN</a></li>
+				<li><a href="<?=base_url('auth')?>"><?php echo $retVal = (empty($this->session->userdata('member_nik'))) ? 'LOGIN' : 'DASHBOARD' ; ?></a></li>
 			</ul>
 			
 		</div>

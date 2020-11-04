@@ -38,7 +38,8 @@
 						</nav>
 						<div class="header_extra d-flex flex-row align-items-center justify-content-start ml-auto">
 							<a href="http://wa.me/628970605445"><div class="phone d-flex flex-row align-items-center justify-content-start"><i class="fa fa-phone" aria-hidden="true"></i><span>08970605445</span></div></a>
-							<div class="book_button trans_200"><a href="<?=base_url('auth')?>">Login</a></div>
+							<div class="book_button trans_200"><a href="<?=base_url('auth')?>"><?php echo $retVal = (empty($this->session->userdata('member_nik'))) ? 'LOGIN' : 'DASHBOARD' ; ?></a></div>
+							
 						</div>
 						<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
 					</div>
@@ -54,7 +55,7 @@
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center">
 			<ul class="menu_nav_list text-center">
 				
-				<li><a href="<?=base_url('auth')?>">LOGIN</a></li>
+				<li><a href="<?=base_url('auth')?>"><?php echo $retVal = (empty($this->session->userdata('member_nik'))) ? 'LOGIN' : 'DASHBOARD' ; ?></a></li>
 			</ul>
 			
 		</div>
@@ -117,7 +118,7 @@
 							</div>
 							<div class="form-group">
 								<label style="color: black">Berapa Hari</label>
-								<div class="form-control"><input type="number" id="tambah" name="reservasi_lama_menginap" class="form-control" onkeyup="tambah_hari()" required="" ></div>
+								<div class="form-control"><input type="number" id="tambah" name="reservasi_lama_menginap" class="form-control" onkeyup="tambah_hari('<?=$dk->kategori_kamar_harga?>')" required="" ></div>
 							</div>
 							<div class="form-group">
 								<label style="color: black">Cek Out</label>
@@ -125,7 +126,7 @@
 							</div>
 							<div class="form-group">
 								<label style="color: black">Total Harga</label>
-								<div class="form-control"><input readonly="" type="number" class="form-control" name="reservasi_total_bayar" id="reservasi_total_bayar" required="" readonly="" value="<?=$dk->kategori_kamar_harga?>"></div>
+								<div class="form-control"><input readonly="" type="number" class="form-control" name="reservasi_total_bayar" id="reservasi_total_bayar" required="" readonly="" value=""></div>
 							</div>
 							<button class="btn btn-success" name="submit">Booking Now</button>
 						</form>		
@@ -172,7 +173,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="<?=base_url('assets1')?>/js/rooms.js"></script>
 <script type="text/javascript">
-	function tambah_hari() {
+	function tambah_hari(harga) {
 		var cek_in = document.getElementById('reservasi_cek_in').value;
 		console.log(cek_in);
 		var date = new Date(cek_in);
@@ -198,8 +199,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		console.log(someFormattedDate);
 		document.getElementById('reservasi_cek_out').value=someFormattedDate;
 
+		console.log(harga);
+		$('#reservasi_total_bayar').val(harga*day);
 	}
 
 </script>
+
 </body>
 </html>

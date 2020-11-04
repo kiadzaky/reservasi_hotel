@@ -103,9 +103,15 @@
 							</a>
 						</li>
 						<li class="nav-item active">
-							<a data-toggle="collapse" href="" class="collapsed" aria-expanded="false">
+							<a  href="<?=base_url('dashboard/riwayat_reservasi')?>"aria-expanded="false">
 								<i class="fas fa-home"></i>
 								<p>Riwayat Reservasi</p>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a  href="<?=base_url('dashboard/reservasi_konfirmasi')?>"aria-expanded="false">
+								<i class="fas fa-home"></i>
+								<p>Reservasi Terkonfirmasi</p>
 							</a>
 						</li>
 						<?php

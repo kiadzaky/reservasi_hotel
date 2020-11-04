@@ -10,12 +10,13 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Add Row</h4>
+										<h4 class="card-title"><?=$title?></h4>
 										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 											<i class="fa fa-plus"></i>
-											Add Row
+											Add <?=$title?>
 										</button>
 									</div>
+									<?php echo $this->session->userdata('message'); ?>
 								</div>
 								<div class="card-body">
 									<!-- Modal -->
@@ -66,176 +67,61 @@
 											</div>
 										</div>
 									</div>
-
+									<div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header no-bd">
+													<h5 class="modal-title">
+														<span class="fw-mediumbold">
+														New</span> 
+														<span class="fw-light">
+															Row
+														</span>
+													</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<img height="500" width="450" id="imgModal">
+												</div>
+												
+											</div>
+										</div>
+									</div>
 									<div class="table-responsive">
 										<table id="add-row" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
-													<th>Name</th>
-													<th>Position</th>
-													<th>Office</th>
-													<th style="width: 10%">Action</th>
+													<th>Reservasi Kode</th>
+													<th>Tanggal Booking</th>
+													<th>Nomor Kamar</th>
+													<th>Kedatangan</th>
+													<th>Tanggal Cek In</th>
+													<th>Tanggal Cek Out</th>
+													<th>Total Bayar</th>
+													<th>Bukti Upload</th>
 												</tr>
 											</thead>
-											<tfoot>
-												<tr>
-													<th>Name</th>
-													<th>Position</th>
-													<th>Office</th>
-													<th>Action</th>
-												</tr>
-											</tfoot>
+											
 											<tbody>
+												<?php foreach ($riwayat_konfirmasi as $rk) {
+												?>
 												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
+													<td><?=$rk->reservasi_kd?></td>
+													<td><?=$rk->reservasi_booking?></td>
+													<td><?=$rk->kamar_nomor?></td>
+													<td><?=$rk->reservasi_waktu?></td>
+													<td><?=$rk->reservasi_cek_in?></td>
+													<td><?=$rk->reservasi_cek_out?></td>
+													<td>Rp. <?= number_format($rk->reservasi_total_bayar) ?></td>
 													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
+														<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#pictureModal" onclick="setImg('<?=$rk->konfirmasi_foto_bukti?>')">Lihat</button>
 													</td>
+													
 												</tr>
-												<tr>
-													<td>Garrett Winters</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Ashton Cox</td>
-													<td>Junior Technical Author</td>
-													<td>San Francisco</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Cedric Kelly</td>
-													<td>Senior Javascript Developer</td>
-													<td>Edinburgh</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Airi Satou</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Brielle Williamson</td>
-													<td>Integration Specialist</td>
-													<td>New York</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Herrod Chandler</td>
-													<td>Sales Assistant</td>
-													<td>San Francisco</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Rhona Davidson</td>
-													<td>Integration Specialist</td>
-													<td>Tokyo</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Colleen Hurst</td>
-													<td>Javascript Developer</td>
-													<td>San Francisco</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td>Sonya Frost</td>
-													<td>Software Engineer</td>
-													<td>Edinburgh</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<i class="fa fa-edit"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<i class="fa fa-times"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
+												<?php
+												} ?>
 											</tbody>
 										</table>
 									</div>
@@ -272,3 +158,11 @@
 				</div>
 			</footer>
 		</div>
+		<script type="text/javascript">
+			function setImg(image) {
+				var path = '<?= base_url('assets/img/')?>';
+				var image = path + image ;
+				console.log(image);
+				document.getElementById("imgModal").src = image;
+			}
+		</script>
