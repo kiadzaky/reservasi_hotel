@@ -23,6 +23,7 @@
 													<th>Tanggal Cek Out</th>
 													<th>Total Bayar</th>
 													<th>Bukti Upload</th>
+													<th>Cetak</th>
 												</tr>
 											</thead>
 											
@@ -40,7 +41,9 @@
 													<td>
 														<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#pictureModal" onclick="setImg('<?=$rk->konfirmasi_foto_bukti?>')">Lihat</button>
 													</td>
-
+													<td>
+														<a href="<?=site_url('dashboard/cetak_bukti/')?><?=$rk->reservasi_kd?>"><i class="fas fa-print"></i></a>
+													</td>
 												</tr>
 												<?php
 												} ?>

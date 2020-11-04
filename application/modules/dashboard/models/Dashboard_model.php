@@ -37,5 +37,12 @@ class Dashboard_model extends CI_Model
 			JOIN reservasi ON konfirmasi.reservasi_kd = reservasi.reservasi_kd
             WHERE konfirmasi_status = '2'");
     }
+    function cetak_bukti($id, $nik)
+    {
+        return $this->db->query("SELECT * FROM `konfirmasi` 
+            JOIN reservasi ON konfirmasi.reservasi_kd = reservasi.reservasi_kd
+            JOIN member ON reservasi.member_nik = member.member_nik
+            WHERE konfirmasi_status = '2' AND konfirmasi.reservasi_kd = '$id' AND reservasi.member_nik = '$nik'");
+    }
 }
 ?>

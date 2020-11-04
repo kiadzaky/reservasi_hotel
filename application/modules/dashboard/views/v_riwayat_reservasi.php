@@ -48,6 +48,7 @@
 																	<i class="fas fa-money-check-alt"></i> &nbsp
 																	Bayar
 																</button>
+																<a href="<?=base_url('dashboard/hapus_riwayat_reservasi/')?><?=$rr->reservasi_kd?>"><button class="btn btn-danger btn-round ml-auto"  onclick="return confirm('Yakin Hapus?')">Batal</button></a>
 																<?php
 
 															}

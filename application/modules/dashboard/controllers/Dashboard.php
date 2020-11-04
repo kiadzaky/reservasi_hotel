@@ -33,6 +33,11 @@ class Dashboard extends MX_Controller
             redirect('admin','refresh');
         }
     }
+    function hapus_riwayat_reservasi($id)
+    {
+        $this->db->delete('reservasi', array('reservasi_kd' => $id));
+        redirect('dashboard/riwayat_reservasi','refresh');
+    }
     function konfirmasi()
     {
         if ($this->session->userdata('member_status') == '1') {
@@ -85,6 +90,16 @@ class Dashboard extends MX_Controller
             $data['view_file'] = 'v_riwayat_konfirmasi';
             $data['riwayat_konfirmasi'] = $this->dm->riwayat_konfirmasi($this->session->userdata('member_nik'))->result();
             echo Modules::run('template/index',$data);
+        }else{
+            redirect('admin','refresh');
+        }
+    }
+    function cetak_bukti($id)
+    {
+       if ($this->session->userdata('member_status') == '1') {
+            $data['bukti_pembayaran'] = $this->dm->cetak_bukti($id, $this->session->userdata('member_nik'))->row_array();
+            // var_dump($data);
+           $this->load->view('v_bukti_pembayaran',$data , FALSE);
         }else{
             redirect('admin','refresh');
         }
