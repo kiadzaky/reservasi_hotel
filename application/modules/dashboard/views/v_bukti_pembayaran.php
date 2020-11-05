@@ -65,7 +65,7 @@
 			</tr>
 			<tr>
 				<td class="style1"><strong>QR CODE</strong></td>
-				<td><img height="220" width="220" src="<?=base_url('assets/img/')?><?=$bukti_pembayaran['konfirmasi_foto_bukti']?>"></td>
+				<td><img height="220" width="220" src="<?=base_url('assets/img/')?><?=$bukti_pembayaran['konfirmasi_foto_qrcode']?>"></td>
 			</tr>
 			<tr>
 				<td><button onclick="cetak()" id="cetak">cetak</button></td>
